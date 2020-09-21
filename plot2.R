@@ -7,6 +7,8 @@ data<-transform(data,Date=as.Date(Date,"%d/%m/%Y"),Time=as.hms(Time),Global_acti
                 Sub_metering_1=as.numeric(Sub_metering_1),Sub_metering_2=as.numeric(Sub_metering_2))
 #subsetting the data from dates - 2007-02-01 and 2007-02-02
 febdata<-filter(data, Date >=("2007-02-01") & Date <= ("2007-02-02"))
+#Creating datetime column
+febdata$datetime<-as.POSIXct(paste(febdata$Date, febdata$Time))
 
 #PLOT 2 CODE:
 dev.new(width=480,height=480,unit="px")
